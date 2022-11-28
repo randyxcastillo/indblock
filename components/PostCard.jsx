@@ -5,11 +5,14 @@ import Link from 'next/link';
 
 import { graphCMSImageLoader } from '../util';
 
-const PostCard = ({ post }) => (
+const PostCard = ({ post, apiType }) => (
   <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8 mt-5">
     <h1 className="transition duration-200 text-left mb-8 m-4 cursor-pointer hover:text-blue-600 text-2xl font-semibold">
         <div className="relative overflow-hidden pt-4 pb-72 object-cover rounded-lg">
-          <img src={post.img} alt="" className="object-top absolute w-full h-full object-cover rounded-lg" />
+          {
+            apiType === "graphql" ? <img src={post.featuredImage.url} alt="" className="object-top absolute h-80 w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg" />
+                                  : <img src={post.img} alt="" className="object-top absolute w-full h-full object-cover rounded-lg" />
+          }
         </div>
         <div className="my-3 text-lg">
           {post.title}
@@ -24,12 +27,21 @@ const PostCard = ({ post }) => (
       </div>
     </div>
     <div className="text-center mt-8">
-      <Link href = {post.link} target="_blank">
-        <span className="transition duration-300 ease transform hover:-translate-y-0.5 
-                         inline-block bg-blue-600 text-base font-medium rounded-full text-white px-8 py-3 cursor-pointer
-                         hover:bg-white hover:shadow-2xl hover:text-blue-600"
-        >Read News</span>
-      </Link>
+      {
+        apiType === "graphql" ? <Link href = {`/post/${post.slug}`} target="_blank">
+                                  <span className="transition duration-300 ease transform hover:-translate-y-0.5 
+                                                  inline-block bg-blue-600 text-base font-medium rounded-full text-white px-8 py-3 cursor-pointer
+                                                  hover:bg-white hover:shadow-2xl hover:text-blue-600"
+                                  >Read News</span>
+                                </Link> 
+                              :
+                              <Link href = {post.link} target="_blank">
+                                <span className="transition duration-300 ease transform hover:-translate-y-0.5 
+                                                inline-block bg-blue-600 text-base font-medium rounded-full text-white px-8 py-3 cursor-pointer
+                                                hover:bg-white hover:shadow-2xl hover:text-blue-600"
+                                >Read News</span>
+                              </Link>
+      }
     </div>
   </div>
 );

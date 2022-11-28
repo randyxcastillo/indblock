@@ -16,7 +16,7 @@ const CategoryPost = ({ posts }) => {
       <div className="">
         <div className="col-span-1 lg:col-span-8">
           {posts.map((post, index) => (
-            <PostCard key={index} post={post.node} />
+            <PostCard key={index} post={post.node} apiType={"graphql"} />
           ))}
         </div>
         {/* <div className="col-span-1 lg:col-span-4">
@@ -33,7 +33,6 @@ export default CategoryPost;
 // Fetch data at build time
 export async function getStaticProps({ params }) {
   const posts = await getGraphCategoryPost(params.slug);
-
   return {
     props: { posts },
   };
