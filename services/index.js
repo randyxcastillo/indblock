@@ -297,7 +297,7 @@ export const getAPIPosts = async () => {
     url: 'https://crypto-news-live11.p.rapidapi.com/all',
     params: {page: '1', per_page: '500'},
     headers: {
-      'X-RapidAPI-Key': '274b2dcf1emsh73ed1a0fb4e0809p12fbd6jsn8d18cebbb496',
+      'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'crypto-news-live11.p.rapidapi.com'
     }
   };
@@ -312,7 +312,7 @@ export const getAPIRecentPosts = async () => {
     url: 'https://crypto-news-live11.p.rapidapi.com/all',
     params: {page: '1', per_page: '10'},
     headers: {
-      'X-RapidAPI-Key': '274b2dcf1emsh73ed1a0fb4e0809p12fbd6jsn8d18cebbb496',
+      'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'crypto-news-live11.p.rapidapi.com'
     }
   };

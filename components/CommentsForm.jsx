@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { submitComment } from '../services';
+import { submitGraphComment } from '../services';
 
 const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false);
@@ -56,7 +56,7 @@ const CommentsForm = ({ slug }) => {
       localStorage.removeItem('email');
     }
 
-    submitComment(commentObj)
+    submitGraphComment(commentObj)
       .then((res) => {
         if (res.createComment) {
           if (!storeData) {
