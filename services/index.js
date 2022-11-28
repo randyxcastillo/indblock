@@ -1,8 +1,10 @@
 import { request, gql } from 'graphql-request';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
+const apiKey = process.env.NEWS_API_KEY;
+import axios from 'axios';
 
-export const getPosts = async () => {
+export const getGraphPosts = async () => {
   const query = gql`
     query MyQuery {
       postsConnection {
@@ -43,7 +45,7 @@ export const getPosts = async () => {
   }
 };
 
-export const getCategories = async () => {
+export const getGraphCategories = async () => {
   const query = gql`
     query GetGategories {
         categories {
@@ -60,7 +62,7 @@ export const getCategories = async () => {
   }
 };
 
-export const getPostDetails = async (slug) => {
+export const getGraphPostDetails = async (slug) => {
   const query = gql`
     query GetPostDetails($slug : String!) {
       post(where: {slug: $slug}) {
@@ -93,12 +95,13 @@ export const getPostDetails = async (slug) => {
   try {
     const result = await request(graphqlAPI, query, { slug });
     return result.post;
+    
   } catch(e) {
     console.log(e);
   }
 };
 
-export const getSimilarPosts = async (categories, slug) => {
+export const getGraphSimilarPosts = async (categories, slug) => {
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {
       posts(
@@ -123,7 +126,7 @@ export const getSimilarPosts = async (categories, slug) => {
   }
 };
 
-export const getAdjacentPosts = async (createdAt, slug) => {
+export const getGraphAdjacentPosts = async (createdAt, slug) => {
   const query = gql`
     query GetAdjacentPosts($createdAt: DateTime!,$slug:String!) {
       next:posts(
@@ -161,7 +164,7 @@ export const getAdjacentPosts = async (createdAt, slug) => {
   }
 };
 
-export const getCategoryPost = async (slug) => {
+export const getGraphCategoryPost = async (slug) => {
   const query = gql`
     query GetCategoryPost($slug: String!) {
       postsConnection(where: {categories_some: {slug: $slug}}) {
@@ -201,7 +204,7 @@ export const getCategoryPost = async (slug) => {
   }
 };
 
-export const getFeaturedPosts = async () => {
+export const getGraphFeaturedPosts = async () => {
   const query = gql`
     query GetCategoryPost() {
       posts(where: {featuredPost: true}) {
@@ -229,7 +232,7 @@ export const getFeaturedPosts = async () => {
   }
 };
 
-export const submitComment = async (obj) => {
+export const submitGraphComment = async (obj) => {
   try {
     const result = await fetch('/api/comments', {
       method: 'POST',
@@ -245,7 +248,7 @@ export const submitComment = async (obj) => {
   }
 };
 
-export const getComments = async (slug) => {
+export const getGraphComments = async (slug) => {
   const query = gql`
     query GetComments($slug:String!) {
       comments(where: {post: {slug:$slug}}){
@@ -263,7 +266,7 @@ export const getComments = async (slug) => {
   }
 };
 
-export const getRecentPosts = async () => {
+export const getGraphRecentPosts = async () => {
   const query = gql`
     query GetPostDetails() {
       posts(
@@ -286,4 +289,34 @@ export const getRecentPosts = async () => {
   } catch(e) {
     console.log(e);
   }
+};
+
+export const getAPIPosts = async () => {
+  const options = {
+    method: 'GET',
+    url: 'https://crypto-news-live11.p.rapidapi.com/all',
+    params: {page: '1', per_page: '500'},
+    headers: {
+      'X-RapidAPI-Key': '274b2dcf1emsh73ed1a0fb4e0809p12fbd6jsn8d18cebbb496',
+      'X-RapidAPI-Host': 'crypto-news-live11.p.rapidapi.com'
+    }
+  };
+  
+  const result = await axios.request(options);
+  return result.data.news;
+}
+
+export const getAPIRecentPosts = async () => { 
+  const options = {
+    method: 'GET',
+    url: 'https://crypto-news-live11.p.rapidapi.com/all',
+    params: {page: '1', per_page: '10'},
+    headers: {
+      'X-RapidAPI-Key': '274b2dcf1emsh73ed1a0fb4e0809p12fbd6jsn8d18cebbb496',
+      'X-RapidAPI-Host': 'crypto-news-live11.p.rapidapi.com'
+    }
+  };
+  
+  const result = await axios.request(options);
+  return result.data.news;
 };

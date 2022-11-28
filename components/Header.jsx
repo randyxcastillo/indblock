@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getCategories } from '../services';
+import { getGraphCategories } from '../services';
 import indblockLogo from '../public/indblockLogo.png';
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getCategories().then((newCategories) => {
+    getGraphCategories().then((newCategories) => {
       setCategories(newCategories);
     });
   }, []);
 
   return (
-    <div className='flex items-center justify-between flex-wrap mr-10 ml-5 p-6'>
-      <div className="flex items-center flex-shrink-0 text-white">
-        <Link href="/">
-          <Image src={indblockLogo} alt="" height="130" width="130" style={{width:"auto", height:"auto"}}/>
-        </Link>
+    <div className='flex items-center justify-between flex-wrap ml-5 p-6'>
+      <div className="flex items-center flex-shrink-0 mr-6 text-white">
+          <Link href="/">
+            <Image src={indblockLogo} alt="" height="25" width="130" style={{width:"auto", height:"auto"}}/>
+          </Link>
       </div>
-      <div className="flex items-center px-3 py-2">
-        <div className="flex items-center px-3 py-2">
+      <div className="flex items-center py-2">
+        <div className="flex items-center mr-4 px-3 py-2">
           <div className="hidden md:float-left md:contents">
             {categories.map((category, index) => (
               <Link key={index} href={`/category/${category.slug}`}>
@@ -32,7 +32,7 @@ const Header = () => {
             ))}
           </div>
         </div>
-        <div className="flex items-center px-3 py-2">
+        <div className="flex items-center py-2">
           <Link href="https://www.twitter.com/indblock" target="_blank">
             <svg
               className="w-6 h-6 text-black hover:text-blue-500 fill-current"

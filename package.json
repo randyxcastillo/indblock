@@ -6,14 +6,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "axios": "^1.2.0",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "html-react-parser": "^3.0.4",
     "moment": "^2.29.4",
     "next": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-multi-carousel": "^2.8.2",
+    "react-slick": "^0.29.0",
     "sass": "^1.56.1"
   },
   "devDependencies": {
