@@ -10,7 +10,6 @@ const FeaturedPostCard = ({ post }) => (
           <img className="flex items-center flex-shrink-0 h-40 object-cover rounded-xl" src={post.featuredImage.url}/>
         </div>
         <div className="p-1">
-          <p className="font-bold text-l">{moment(post.datePublished).format('MMM DD, YYYY')}</p>
           <p className="text-sm mt-2 h-20 text-ellipsis overflow-hidden ...">{post.title}</p>
         </div>
       </Link>
