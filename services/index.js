@@ -292,31 +292,29 @@ export const getGraphRecentPosts = async () => {
 };
 
 export const getAPIPosts = async () => {
+  
   const options = {
     method: 'GET',
-    url: 'https://crypto-news-live11.p.rapidapi.com/all',
-    params: {page: '1', per_page: '500'},
+    url: 'https://bing-news-search1.p.rapidapi.com/news/search',
+    params: {
+      q: 'Crypto',
+      count: '100',
+      setLang: 'EN',
+      freshness: 'Week',
+      textFormat: 'Raw',
+      safeSearch: 'Moderate'
+    },
     headers: {
-      'X-RapidAPI-Key': apiKey,
-      'X-RapidAPI-Host': 'crypto-news-live11.p.rapidapi.com'
+      'X-BingApis-SDK': 'true',
+      'X-RapidAPI-Key': '274b2dcf1emsh73ed1a0fb4e0809p12fbd6jsn8d18cebbb496',
+      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
     }
   };
-  
-  const result = await axios.request(options);
-  return result.data.news;
-}
 
-export const getAPIRecentPosts = async () => { 
-  const options = {
-    method: 'GET',
-    url: 'https://crypto-news-live11.p.rapidapi.com/all',
-    params: {page: '1', per_page: '10'},
-    headers: {
-      'X-RapidAPI-Key': apiKey,
-      'X-RapidAPI-Host': 'crypto-news-live11.p.rapidapi.com'
-    }
-  };
-  
-  const result = await axios.request(options);
-  return result.data.news;
-};
+  try{
+    const result = await axios.request(options);
+    return result.data.value;
+  } catch(e) {
+    console.log("API Error:", e)
+  }
+}

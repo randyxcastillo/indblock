@@ -9,13 +9,10 @@ export default function Homeg({ posts }) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-4 col-span-1">
           <div className="lg:sticky relative top-8">
-            <PostWidget posts={posts.slice(0, 10)}/>
+            <PostWidget posts={posts.slice(0, 5)}/>
           </div>
         </div>
         <div className="lg:col-span-8 col-span-1">
-          {/* {posts.map((post, index) => (
-            <PostCard key={index} post={post.node} />
-          ))} */}
           {posts.map((post) => (
             <PostCard post={post} />
           ))}
