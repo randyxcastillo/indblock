@@ -80,7 +80,9 @@ const FeaturedPosts = () => {
         swipeable
       >
           {dataLoaded && featuredPosts.map((post, index) => (
-            <FeaturedPostCard key={index} post={post} />
+            <div key={index}>
+              <FeaturedPostCard key={index} post={post} />
+            </div>
           ))}
       </Carousel>
     </div>

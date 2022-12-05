@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import Link from 'next/link';
 
-import { getGraphSimilarPosts} from '../services';
+import {getGraphSimilarPosts} from '../services';
 
 const PostWidget = ({ posts, categories, slug }) => {
   const [relatedPosts, setRelatedPosts] = useState([]);
@@ -28,24 +28,16 @@ const PostWidget = ({ posts, categories, slug }) => {
           <div className="flex-grow text-xs hover:text-blue-600">
             {
               dataFrom === 'api' ? 
-              <>
                 <p className="text-gray-500">{moment(post.datePublished).format('MMM DD, YYYY')}</p>
-              </>
               :
-              <>
                 <p className="text-gray-500">{moment(post.date).format('MMM DD, YYYY')}</p>
-              </>
             }
             
             {
               dataFrom === 'api' ? 
-                <>
                 <Link href = {post.url} target="_blank" className="text-md" key={index}>{post.name}</Link>
-                </>  
                 :
-                <>
                 <Link href={`/post/${post.slug}`} className="text-md" key={index}>{post.title}</Link> 
-                </>
             }
           </div>
         </div>
