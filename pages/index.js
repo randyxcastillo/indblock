@@ -2,7 +2,7 @@ import { FeaturedPosts } from '../sections/index';
 import { PostCard, PostWidget } from '../components';
 import { getAPIPosts } from '../services';
 
-export default function Homeg({ posts }) {
+export default function Home ({ posts }) {
   return (
     <div className="container mx-auto px-6 mb-4">
       <FeaturedPosts />
@@ -13,8 +13,8 @@ export default function Homeg({ posts }) {
           </div>
         </div>
         <div className="lg:col-span-8 col-span-1">
-          {posts.map((post) => (
-            <PostCard post={post} />
+          {posts.map((post, index) => (
+              <PostCard key={index} post={post} />
           ))}
         </div>
       </div>

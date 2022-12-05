@@ -7,7 +7,7 @@ const PostCard = ({ post, apiType }) => (
   <>
     {
       apiType === "graphql" ? 
-        <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8 mt-5">
+      <div key={post.slug} className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8 mt-5">
         <h1 className="transition duration-200 text-left mb-8 m-4 text-2xl font-semibold">
             <div className="relative overflow-hidden pt-4 pb-72 object-cover rounded-lg">
               {
@@ -44,7 +44,7 @@ const PostCard = ({ post, apiType }) => (
       </div>
 
       :
-        <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
+        <div key={post.url} className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
           <div className='pt-2'>
             <h1 className="transition duration-200 text-left mb-8 m-4 text-2xl font-semibold">
                 <div className="my-3 text-lg">
