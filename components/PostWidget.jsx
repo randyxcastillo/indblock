@@ -28,16 +28,24 @@ const PostWidget = ({ posts, categories, slug }) => {
           <div className="flex-grow text-xs hover:text-blue-600">
             {
               dataFrom === 'api' ? 
+              <div>
                 <p className="text-gray-500">{moment(post.datePublished).format('MMM DD, YYYY')}</p>
+              </div>
               :
+              <div>
                 <p className="text-gray-500">{moment(post.date).format('MMM DD, YYYY')}</p>
+              </div>
             }
             
             {
               dataFrom === 'api' ? 
-                <Link href = {post.url} target="_blank" className="text-md" key={index}>{post.name}</Link>
+                <div>
+                  <Link href = {post.url} target="_blank" className="text-md" key={index}>{post.name}</Link>
+                </div>
                 :
-                <Link href={`/post/${post.slug}`} className="text-md" key={index}>{post.title}</Link> 
+                <div>
+                  <Link href={`/post/${post.slug}`} className="text-md" key={index}>{post.title}</Link> 
+                </div>
             }
           </div>
         </div>
