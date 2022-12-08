@@ -12,7 +12,7 @@ const PostCard = ({post}) => {
             {/* <p className="m-4 text-gray-500 mb-6">{moment(post.datePublished).format('MMM DD, YYYY')}</p>
             <p className="transition duration-200 text-left mb-8 m-4">
               {post.description}
-            </p>
+            </p> */}
             <div className="text-center mt-6">
               <Link href = {post.url} target="_blank">
                 <span className="text-center transition duration-300 ease transform hover:-translate-y-0.5 
@@ -20,7 +20,7 @@ const PostCard = ({post}) => {
                                 hover:bg-white hover:shadow-2xl hover:text-blue-600"
                 >Read News</span>
               </Link>
-            </div> */}
+            </div>
       </div>
     )
 }
