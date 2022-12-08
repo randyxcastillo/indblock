@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
       </div>
       <div className="flex items-center py-2">
-        <div className="flex items-center mr-4 px-3 py-2">
+        {/* <div className="flex items-center mr-4 px-3 py-2">
           <div className="hidden md:float-left md:contents">
             {categories.map((category, index) => (
               <Link key={index} href={`/category/${category.slug}`}>
@@ -31,8 +31,8 @@ const Header = () => {
               </Link>
             ))}
           </div>
-        </div>
-        <div className="flex items-center py-2">
+        </div> */}
+        <div className="flex items-center py-2 px-4">
           <Link href="https://www.twitter.com/indblock" target="_blank">
             <svg
               className="w-6 h-6 text-black hover:text-blue-500 fill-current"

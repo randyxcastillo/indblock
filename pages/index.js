@@ -11,18 +11,12 @@ export default function Home ({ posts }) {
           <PostWidget className="lg:sticky relative top-8" posts={posts.slice(0, 5)}/>
         </div>
         <div className="lg:col-span-8 col-span-1">
-          <PostCard post={posts[0]} />
-          <PostCard post={posts[1]} />
-          <PostCard post={posts[2]} />
-          <PostCard post={posts[3]} />
-        </div>
-        {/* <div className="lg:col-span-8 col-span-1">
           {posts.map((post, index) => (
             <div key={index}>
               <PostCard key={index} post={post} />
             </div>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   );
