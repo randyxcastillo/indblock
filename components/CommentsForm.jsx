@@ -3,9 +3,9 @@ import { submitGraphComment } from '../services';
 
 const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false);
-  const [localStorage, setLocalStorage] = useState(null);
+  const [localStorage, setLocalStorage] = useState("");
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [formData, setFormData] = useState({ name: null, email: null, comment: null, storeData: false });
+  const [formData, setFormData] = useState({ name: "", email: "", comment: "", storeData: false });
 
   useEffect(() => {
     setLocalStorage(window.localStorage);
