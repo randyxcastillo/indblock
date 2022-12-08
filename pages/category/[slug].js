@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-
+import { getAPIPosts } from '../../services';
 import { getGraphCategories, getGraphCategoryPost } from '../../services';
 import { PostCard, Categories, Loader } from '../../components';
 
@@ -13,26 +13,29 @@ const CategoryPost = ({ posts }) => {
 
   return (
     <div className="container mx-auto px-8 mb-8">
-      <div className="">
-        <div className="col-span-1 lg:col-span-8">
-          {posts.map((post, index) => (
-            <PostCard key={index} post={post.node} apiType={"graphql"} />
-          ))}
-        </div>
-        {/* <div className="col-span-1 lg:col-span-4">
-          <div className="relative lg:sticky top-8">
-            <Categories />
+      <div className="lg:col-span-8 col-span-">
+        {posts.map((post, index) => (
+          <div key={index}>
+            <PostCard key={index} post={post} />
           </div>
-        </div> */}
+        ))}
       </div>
     </div>
   );
 };
 export default CategoryPost;
 
+// // Fetch data at build time
+// export async function getStaticProps({ params }) {
+//   const posts = await getGraphCategoryPost(params.slug);
+//   return {
+//     props: { posts },
+//   };
+// }
+
 // Fetch data at build time
-export async function getStaticProps({ params }) {
-  const posts = await getGraphCategoryPost(params.slug);
+export async function getStaticProps() {
+  const posts = (await getAPIPosts()) || [];
   return {
     props: { posts },
   };

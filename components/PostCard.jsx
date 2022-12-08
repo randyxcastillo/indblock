@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import Link from 'next/link';
 
-const PostCard = ({ post, apiType }) => {
+const PostCard = ({post}) => {
   
   // if(apiType === "graphql") {
   //   return (
