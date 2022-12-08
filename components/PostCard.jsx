@@ -9,10 +9,10 @@ const PostCard = ({post}) => {
             <p className="pt-5 transition duration-200 text-left m-4 text-xl font-semibold">
               {post.name}
             </p>
-            {/* <p className="m-4 text-gray-500 mb-6">{moment(post.datePublished).format('MMM DD, YYYY')}</p>
+            {/* <p className="m-4 text-gray-500 mb-6">{moment(post.datePublished).format('MMM DD, YYYY')}</p> */}
             <p className="transition duration-200 text-left mb-8 m-4">
               {post.description}
-            </p> */}
+            </p>
             <div className="text-center mt-6">
               <Link href = {post.url} target="_blank">
                 <span className="text-center transition duration-300 ease transform hover:-translate-y-0.5 
