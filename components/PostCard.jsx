@@ -7,11 +7,11 @@ const PostCard = ({post}) => {
     return (
       <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-6 mb-8">
             <p className="pt-5 transition duration-200 text-left m-4 text-xl font-semibold">
-                  {post.name}
+              {post.name}
             </p>
             <p className="m-4 text-gray-500 mb-6">{moment(post.datePublished).format('MMM DD, YYYY')}</p>
             <p className="transition duration-200 text-left mb-8 m-4">
-                  {post.description}
+              {post.description}
             </p>
             <div className="text-center mt-6">
               <Link href = {post.url} target="_blank">
